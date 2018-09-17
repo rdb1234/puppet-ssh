@@ -42,7 +42,13 @@
 #
 # Copyright 2018 Your name here, unless otherwise noted.
 #
-class ssh {
-
+class ssh (
+  String $package_name = $::ssh::params::package,
+  String $service_name = $::ssh::params::service,
+) inherits ::ssh::params
+{
+  
+  class { '::ssh::install': } ->
+  class { '::ssh::service': }
 
 }
